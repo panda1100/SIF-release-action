@@ -1,0 +1,6 @@
+Bootstrap: docker
+From: rockylinux/rockylinux:latest
+
+%post
+dnf install -y epel-release
+dnf install -y netcat
