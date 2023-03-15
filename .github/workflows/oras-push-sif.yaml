@@ -27,6 +27,6 @@ jobs:
         sudo apptainer build netcat.sif netcat.def
     - name: ORAS login and push SIF
       run: |
-        echo ${{ secrets.GHCR }} | apptainer remote login --username ${{ github.actor }} --password-stdin oras://${{ env.REGISTRY }}
+        echo ${{ secrets.GITHUB_TOKEN }} | apptainer remote login --username ${{ github.actor }} --password-stdin oras://${{ env.REGISTRY }}
         echo oras://${{ env.REGISTRY }}/${{ github.actor }}/netcat:latest
         apptainer -d push netcat.sif oras://${{ env.REGISTRY }}/${{ github.actor }}/netcat:latest
